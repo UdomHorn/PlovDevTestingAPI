@@ -6,8 +6,6 @@ import Userlist from './components/users/Userlist'
 import Homepage from './public/Homepage'
 import React from 'react'
 import Jobcount from './components/jobs/Jobcount'
-import API_URL from './config/api'
-
 function App() {
   const [user, setUser] = useState([])
   const [form, setForm] = useState({
@@ -23,7 +21,7 @@ function App() {
   // get User
     const getUser = async ()=>{
       try{
-        const res = await fetch(`${API_URL}/api/user`)
+        const res = await fetch("/api/user")
         const data = await res.json()
         setUser(data.users)
       }
@@ -53,7 +51,7 @@ function App() {
     setMessage("")
 
     try {
-      const res = await fetch(`${API_URL}/api/user`, {
+      const res = await fetch("/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,7 +83,7 @@ function App() {
 const handleDeleteUser = async (userId) => {
   if (window.confirm("Are you sure you want to delete this user?")) {
     try {
-      const res = await fetch(`${API_URL}/api/user/${userId}`, {
+      const res = await fetch(`/api/user/${userId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
