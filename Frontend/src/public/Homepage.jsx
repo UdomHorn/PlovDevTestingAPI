@@ -8,10 +8,10 @@ const Homepage = () => {
     <div className=' m-[auto] p-[auto] '>
       <div className=' h-[570px]flex m-auto text-2xl text-white max-lg:text-sm'>
         <div className='relative  bg-black'>
-          <img src={img1} alt="" className='w-full h-full rounded-xl' />
+          <img src={"https://i1-e.pinimg.com/1200x/65/bd/46/65bd465d2d14121bfeb35eb369442a8c.jpg"} alt="" className='w-full h-screen max-lg:h-[50%] rounded-xl' />
 
           <div className='absolute top-[20%] pl-[10%] w-full '>
-            <div className='text-[70px] max-xl:text-[48px] font-bold'>Code Smarter. <br />Build Real <span className='text-teal-300'>Skills.</span> </div>
+            <div className='text-[70px] max-xl:text-[48px] font-bold text-black'>Code Smarter. <br />Build Real <span className='text-teal-300'>Skills.</span> </div>
             <div className='min-lg:mt-24  md:mt-12'>Start learning with PlovDev, earn certificates, and land a job.</div>
             <div className='font-bold min-lg:mt-24  '>
                 <button className='underline pr-12  md:mt-12'>Start For Free</button>

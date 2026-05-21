@@ -3,20 +3,20 @@ import thumnailimage from '../../assets/Tumnailimage.png'
 export default function CourseCard({ data }) {
   return (
     <>
-      <div className='m-12 w-[209px] border-1 border-gray-300 rounded-lg relative bg-white'>
+      <div className='m-12 w-[209px] h-[350px] border-1 border-gray-300 rounded-lg relative bg-white'>
         <div className='relative'>
           <div className=''>
             <img
               className='rounded-lg'
-              src={thumnailimage}
+              src={"https://i.pinimg.com/736x/8e/5d/86/8e5d86a7639eb6d9e18d6787489724d6.jpg"}
               alt={data.title}
             />
           </div>
-          <div className='absolute bottom-6 left-3 bg-black text-white px-4 text-sm'>
+          <div className='absolute bottom-8 left-3 bg-black text-white px-4 text-sm'>
             {data.duration}
           </div>
         </div>
-        <div className='bg-white w-[207px] h-[25px] top-[55%] absolute'></div>
+        <div className='bg-white w-[207px] h-[30px] top-[60%] absolute'></div>
         <div className='p-4 '>
           <div className='text-orange-500 text-sm text-bold font-bold'>
             {data.category}
