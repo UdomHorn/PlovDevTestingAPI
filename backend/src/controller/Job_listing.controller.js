@@ -1,5 +1,5 @@
 const {Job_listings}= require('../models')
-const job_listings = require('../models/job_listings')
+
 
 
 
@@ -8,7 +8,7 @@ const createJob_listings = async (req, res) => {
    
    
     try{
-         const {company_name, hr_name, title,  emp_type, description, location, salary_min} = req.body
+         const {company_name, hr_name, title,  emp_type, description, location, salary_min,status} = req.body
           const Job_listing = await Job_listings.create({
             company_name:company_name,
             hr_name:hr_name,
@@ -16,7 +16,8 @@ const createJob_listings = async (req, res) => {
             emp_type:emp_type,
             description:description,
             location:location,
-            salary_min:salary_min
+            salary_min:salary_min,
+            status:status
           })
 
           res.json({
@@ -76,9 +77,9 @@ const updateJoblisting = async (req,res)=>{
                 message: "User not Found!!!"
             })
         }
-        const {company_name, hr_name, title,  emp_type, description, location, salary_min} = req.body
+        const {company_name, hr_name, title,  emp_type, description, location, salary_min,status} = req.body
         const updateJoblisting = joblisting.update({
-            company_name, hr_name, title,  emp_type, description, location, salary_min
+            company_name, hr_name, title,  emp_type, description, location, salary_min,status
         })
 
         res.json({
@@ -110,11 +111,24 @@ const DeleteJobListing = async (req,res) => {
     }
 }
 
+// jobcount
+const Jobcount = async(req,res)=>{
+    try{
+        const count = await Job_listings.count(
+            {where: { status: "published" }}
+        )
+        res.json({count})
+    }catch(error){
+        res.status(500).json({message: error.message})
+    }
+}
+
 
 module.exports = {
     createJob_listings,
     viewJobListings,
     viewJobListing,
     updateJoblisting,
-    DeleteJobListing
+    DeleteJobListing,
+    Jobcount
 }

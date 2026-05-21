@@ -5,6 +5,7 @@ import Userform from './components/users/Userform'
 import Userlist from './components/users/Userlist'
 import Homepage from './public/Homepage'
 import React from 'react'
+import Jobcount from './components/jobs/Jobcount'
 function App() {
   const [user, setUser] = useState([])
   const [form, setForm] = useState({

@@ -20,8 +20,7 @@ const Coursecount = () => {
 
   return (
     <div>
-      <div className='font-bold text-2xl  max-md:text-sm'>{coursecount}</div>
-      <div className='text-sm text-gray-400 max-md:text-xs'>Courses</div>
+        {coursecount}
     </div>
   )
 }

@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     emp_type: DataTypes.STRING,
     description: DataTypes.TEXT,
     location: DataTypes.STRING,
-    salary_min: DataTypes.DOUBLE
+    salary_min: DataTypes.DOUBLE,
+    status:DataTypes.STRING
   }, {
     sequelize,  
     modelName: 'Job_listings',

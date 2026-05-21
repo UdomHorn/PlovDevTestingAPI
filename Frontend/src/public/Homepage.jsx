@@ -2,6 +2,7 @@ import React from 'react'
 import img1 from "../assets/Tumnailimage.png"
 import CourseGrid from '../components/courses/CourseGrid'
 import Coursecount from '../components/courses/Coursecount'
+import Jobcount from '../components/jobs/Jobcount'
 const Homepage = () => {
   return (
     <div className=' m-[auto] p-[auto] '>
@@ -31,19 +32,17 @@ const Homepage = () => {
       <CourseGrid />
 
       <div className='bg-black w-full p-12 max-md:p-6 text-white grid grid-cols-4 text-center'>
-        <Coursecount />
         <div>
-            <div className='font-bold text-2xl  max-md:text-sm'>54</div>
-            <div className='text-sm text-gray-400 max-md:text-xs'>Instructors</div>
-        </div>
-        <div>
-            <div className='font-bold text-2xl  max-md:text-sm'>544</div>
+             <div className='font-bold text-2xl  max-md:text-sm'><Coursecount /></div>
             <div className='text-sm text-gray-400 max-md:text-xs'>Courses</div>
         </div>
-        <div className=''>
-            <div className='font-bold text-2xl  max-md:text-sm'>43</div>
+
+        <div>
+             <div className='font-bold text-2xl  max-md:text-sm'><Jobcount/></div>
             <div className='text-sm text-gray-400 max-md:text-xs'>Active Jobs</div>
         </div>
+        
+       
       </div>
 
     
