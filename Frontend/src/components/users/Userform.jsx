@@ -3,7 +3,8 @@ import React from 'react'
 const Userform = ({form, onChange, onSubmit}) => {
   return (
     <form onSubmit={onSubmit}>
-      <div className='flex flex-col gap-4 w-[200px] m-12'>
+      <div className=' '>
+        <div className='flex flex-col gap-4 w-[200px] m-12 '>
         <input 
           className='border-1 p-2'
           name='firstName' 
@@ -34,12 +35,23 @@ const Userform = ({form, onChange, onSubmit}) => {
           required
         />
 
+        <input 
+          className='border-1 p-2'
+          name='password'
+          value={form.password}
+          onChange={onChange}
+          type="password" 
+          placeholder='Password'
+          required
+        />
+
         <button 
           className='bg-green-400 p-2 rounded'
           type='submit'
         >
-          Submit
+          Register
         </button>
+      </div>
       </div>
     </form>
   )

@@ -4,12 +4,13 @@ const {User} = require("../models")
 const createUser = async  (req , res) => {
     try {
 
-        const {firstName , lastName , email} = req.body
+        const {firstName , lastName , email, password} = req.body
 
         const user = await User.create({
             firstName : firstName ,
             lastName : lastName ,
-            email : email 
+            email : email ,
+            password: password
         })
 
         res.json({
@@ -55,10 +56,10 @@ const updateUser = async (req , res) => {
             })
         }
 
-        const {firstName , lastName , email} = req.body ;
+        const {firstName , lastName , email, password} = req.body ;
 
         const updateUser = await user.update({
-            firstName , lastName , email
+            firstName , lastName , email, password
         })
 
         res.json({
