@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import CourseCard from './CourseCard'
+import API_URL from '../../config/api'
 
 const CourseGrid = () => {
     const [thumnail, setThumnail] = useState([])
@@ -9,7 +10,7 @@ const CourseGrid = () => {
     useEffect(()=>{
     const getThumnail = async ()=>{
       try{
-        const res = await fetch("/api/thumnail")
+        const res = await fetch(`${API_URL}/api/thumnail`)
         const data = await res.json()
         setThumnail(data.newthumnails)
       }
