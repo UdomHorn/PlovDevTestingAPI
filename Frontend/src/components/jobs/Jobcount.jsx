@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import API_URL from '../../config/api'
 
 
 const Jobcount = () => {
@@ -7,7 +8,7 @@ const Jobcount = () => {
     useEffect(()=>{
         const getJobCount = async ()=>{
             try{
-                const res = await fetch("/api/joblisting/count")
+                const res = await fetch(`${API_URL}/api/joblisting/count`)
                 const data = await res.json()
                 setJobcount (data.count||0)
             }
