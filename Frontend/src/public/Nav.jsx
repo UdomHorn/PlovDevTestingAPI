@@ -23,7 +23,9 @@ const Nav = () => {
         <div className=' flex justify-between items-center xl:w-[75%] max-2xl:w-[96%] m-4 gap-6 '>
           <div className='flex items-center gap-2 cursor-pointer '>
             
-            <div className=' text-xl text black '>PlovDev</div>
+            <div className=' text-xl text black '><h1 className="text-2xl font-bold text-black">
+            Plov<span className="text-yellow-400">Dev</span>
+          </h1></div>
           </div>
           <ul className='m-4 max-lg:hidden flex gap-6 items-center '>
             

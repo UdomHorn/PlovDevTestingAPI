@@ -6,35 +6,16 @@ import Jobcount from '../components/jobs/Jobcount'
 import { NavLink } from 'react-router-dom'
 import AboutCard from '../components/courses/about/AboutCard'
 import TotalDetail from '../components/courses/about/TotalDetail'
+import HeroSectionCard from './HeroSectionCard'
 const Homepage = () => {
   return (
     <div className=' m-[auto] p-[auto] pt-30'>
-      <div className='  text-2xl text-white max-lg:text-sm'>
-        
-          <div className='bg-black w-full min-md:flex'>
-          <div className='   w-[50%] p-[8%] max-md:w-full'>
-            <div className=' text-[70px] max-xl:text-[48px] font-bold'>Code Smarter. <br />Build Real <span className='text-teal-300'>Skills.</span> </div>
-            <div className='min-lg:mt-24  md:mt-12'>Start learning with PlovDev, earn certificates, and land a job.</div>
-            <div className='font-bold min-lg:mt-24  '>
-                <button className='underline pr-12  md:mt-12'><NavLink to="/register">Start For Free</NavLink></button>
-                <button className='bg-teal-300 px-4 py-4 rounded-md  md:mt-12'><NavLink to="/courses">Explore Courses</NavLink></button>
-            </div>
-          </div>
-            <div className='flex items-center justify-center w-[50%] max-md:w-full'>
-                <img src={Heroimg} alt=""   />
-            </div>
-          </div>
-          <div className=' w-full bg-black text-white  '>
-            <marquee behavior="" direction="">
-                <div className='flex m-4 justify-around '>
-                <div >html</div> <div>css</div><div>javascript</div><div>python</div><div>html</div> <div>css</div>
-            </div>
-            </marquee>
-            </div>
-
-        
-      </div>
-
+     
+     <HeroSectionCard 
+        Title1="Code Smarter Build Real" 
+        Title2 ="Skills." 
+        Subtitle= "Start learning with PlovDev, earn certificates, and land a job." 
+        img={Heroimg} />
      
         <CourseGrid />
       
