@@ -60,7 +60,7 @@ const Register = () => {
   }
  
   return (
-    <div className='bg-white fixed z-10 right-0 w-[300px]'>
+    <div className=' w-[300px]m-[auto] p-[auto] pt-80 flex justify-center'>
      <div>
          <Userform 
         form={form} 
