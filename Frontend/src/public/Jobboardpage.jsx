@@ -2,7 +2,7 @@ import React from 'react'
 import Register from './Register'
 import GetUser from '../components/users/GetUser'
 import { NavLink } from 'react-router-dom'
-import Jobimg from '../assets/Hero-img.png'
+import Jobimg from '../assets/Job-img.png'
 import HeroSectionCard from './HeroSectionCard'
 // import image from "../assets/JobboardImg.png"
 
