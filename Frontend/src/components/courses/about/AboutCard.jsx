@@ -1,9 +1,12 @@
 import React from 'react'
-
+import { PiEyeBold } from "react-icons/pi";
+import { GoGoal } from "react-icons/go";
+import { PiCertificate } from "react-icons/pi";
 const AboutCard = () => {
   return (
-    <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 text-center mt-24 max-md:mt-12 mx-18 '>
+    <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 text-center mt-24 max-md:mt-12 mx-18 gap-12 max-lg:gap-8 max-md:gap-6 max-sm:gap-4'>
             <div>
+                <div className="flex justify-center items-center"><PiEyeBold className='text-2xl' /></div>
                 <div className='text-2xl mb-6'>
                      Our Vision
                 </div>
@@ -12,6 +15,7 @@ const AboutCard = () => {
                 </div>
             </div>
             <div>
+            <div className="flex justify-center items-center"><GoGoal className='text-2xl' /></div>
                 <div className='text-xl mb-6'>
                     Our Mission
                 </div>
@@ -20,6 +24,7 @@ const AboutCard = () => {
                 </div>
             </div>
             <div>
+            <div className="flex justify-center items-center"><PiCertificate className='text-2xl' /></div>
                 <div className='text-xl mb-6'>
                     Certificate with Job-board
                 </div>
