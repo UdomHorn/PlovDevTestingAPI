@@ -1,20 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import Search from '../components/commons/Search'
+import { useDebounce } from 'react-use'
+
 const Nav = () => {
   const [menuOpen, IsmenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
+
+  useDebounce(
+    () => {
+      setDebouncedSearchTerm(searchTerm)
+    },
+    500,
+    [searchTerm]
+  )
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
-    };
+    if (!debouncedSearchTerm) return
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+    console.log('Search:', debouncedSearchTerm)
+  }, [debouncedSearchTerm])
+ 
   return (
     <nav className='fixed top-0 left-0 w-full z-10  z-50  pt-4 '>
       <div className='bg-white/50 backdrop-blur-sm flex justify-center items-center text-lg  max-w-[1440px] max-2xl:w-[96%] mx-auto rounded-3xl border-1 border-amber-300/90
@@ -36,24 +44,7 @@ const Nav = () => {
   
           </ul>
           {/* search  */}
-          <div className=" flex w-full items-center gap-2 rounded-full border  border-white/55 bg-white/65 px-3 py-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition focus-within:border-amber-300/90 focus-within:bg-white/80 focus-within:shadow-[0_12px_32px_rgba(245,158,11,0.14)] sm:flex-1 md:w-auto md:min-w-[13rem]">
-                 <svg
-                  viewBox="0 0 24 24"
-                  className="h-4 w-4 text-slate-500 transition group-focus-within:text-amber-600"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="M20 20l-3.5-3.5" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Search courses"
-                  className="w-full bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-500 md:w-40"
-                />
-              </div>
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}  />
           
           <div className='flex items-center gap-2 '>
             <div className=' w-[44px] h-[44px] rounded-full border-2 border-solid border-gray-200 max-sm:hidden'></div>
