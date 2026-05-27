@@ -1,27 +1,43 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Search from '../components/commons/Search'
-import { useDebounce } from 'react-use'
 
 const Nav = () => {
   const [menuOpen, IsmenuOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
-
-  useDebounce(
-    () => {
-      setDebouncedSearchTerm(searchTerm)
-    },
-    500,
-    [searchTerm]
-  )
+  const [hasTyped, setHasTyped] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
-    if (!debouncedSearchTerm) return
+    if (!hasTyped) return
+    const isSearchEnabledPage = location.pathname === '/courses' || location.pathname === '/'
+    if (!isSearchEnabledPage) return
 
-    console.log('Search:', debouncedSearchTerm)
-  }, [debouncedSearchTerm])
+    const timer = setTimeout(() => {
+      const query = searchTerm.trim()
+      const targetPath = location.pathname
+      const targetSearch = query ? `?search=${encodeURIComponent(query)}` : ''
+
+      const currentUrl = `${location.pathname}${location.search}`
+      const targetUrl = `${targetPath}${targetSearch}`
+
+      if (currentUrl !== targetUrl) {
+        navigate(targetUrl)
+      }
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [searchTerm, hasTyped, navigate, location.pathname, location.search])
+
+  useEffect(() => {
+    const isSearchEnabledPage = location.pathname === '/courses' || location.pathname === '/'
+    if (!isSearchEnabledPage) return
+
+    const currentSearch = new URLSearchParams(location.search).get('search') || ''
+    setSearchTerm(currentSearch)
+  }, [location.pathname, location.search])
  
   return (
     <nav className='fixed top-0 left-0 w-full z-10  z-50  pt-4 '>
@@ -44,7 +60,7 @@ const Nav = () => {
   
           </ul>
           {/* search  */}
-          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}  />
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} setHasTyped={setHasTyped} />
           
           <div className='flex items-center gap-2 '>
             <div className=' w-[44px] h-[44px] rounded-full border-2 border-solid border-gray-200 max-sm:hidden'></div>
