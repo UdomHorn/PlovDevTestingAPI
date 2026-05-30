@@ -10,11 +10,14 @@ import AboutUspage from './public/AboutUspage'
 import Jobboardpage from './public/Jobboardpage'
 import Userlist from './components/users/Userlist'
 import Footer from './public/Footer'
+import SidebarAdmin from './layout/SidebarAdmin'
+import SidebarUser from './layout/SidebarUser'
+
 function App() {
 
   return (
     <BrowserRouter>
-      <div className='bg-gray-100'>
+      <div className=''>
         <div className='w-[85%] xl:w-[90%] max-xl:w-[94%] max-w-360 m-auto p-[auto]  justify-center bg-white '>
         <Nav />
 
@@ -27,6 +30,9 @@ function App() {
   </Routes>
 
       <Footer />
+      {/* <SidebarAdmin /> */}
+      {/* <SidebarUser /> */}
+      
       
       </div>
       </div>
