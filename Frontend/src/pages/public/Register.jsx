@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import Userform from '../components/users/Userform'
+import Userform from '../../components/users/Userform'
 
 const Register = () => {
 

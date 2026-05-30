@@ -1,12 +1,12 @@
 import React from 'react'
-import Coursecount from '../components/courses/Coursecount'
-import CourseGrid from '../components/courses/CourseGrid'
-import Jobcount from '../components/jobs/Jobcount'
-import Aboutusimage from "../assets/Aboutus-img.png"
+import Coursecount from '../../components/courses/Coursecount'
+import CourseGrid from '../../components/courses/CourseGrid'
+import Jobcount from '../../components/jobs/Jobcount'
+import Aboutusimage from "../../assets/Aboutus-img.png"
 import { NavLink } from 'react-router-dom'
-import AboutCard from '../components/courses/about/AboutCard'
-import TotalDetail from '../components/courses/about/TotalDetail'
-import PlovDevHelp from '../components/courses/about/PlovDevHelp'
+import AboutCard from '../../components/courses/about/AboutCard'
+import TotalDetail from '../../components/courses/about/TotalDetail'
+import PlovDevHelp from '../../components/courses/about/PlovDevHelp'
 import HeroSectionCard from './HeroSectionCard'
 const AboutUspage = () => {
   return (
