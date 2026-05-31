@@ -9,7 +9,7 @@ import HeroSectionCard from './HeroSectionCard'
 
 const Jobboardpage = () => {
   return (
-    <div className=' m-[auto] p-[auto] justify-center  pt-30'>
+    <div className=' m-[auto] p-[auto] justify-center  pt-23'>
 
       <HeroSectionCard 
       Title1="Job in" 
@@ -18,12 +18,12 @@ const Jobboardpage = () => {
       body="PlovDev works hand-in-hand with a growing network of tech companies and IT partners to bring you exclusive job opportunities you won't find anywhere else. From startups
 to established tech firms — they come to us because they want talent like you." 
         img={Jobimg}
-        marque1={"ABA"}
-        marque2={"Amret"}
-        marque3={"Wing Bank"}
-        marque4={"EMCAST"}
-        marque5={"ACELEDA Bank"}
-        marque6={"PPCBank"}
+        marquee1={"ABA"}
+        marquee2={"Amret"}
+        marquee3={"Wing Bank"}
+        marquee4={"EMCAST"}
+        marquee5={"ACELEDA Bank"}
+        marquee6={"PPCBank"}
          />
       <GetUser/>
     </div>

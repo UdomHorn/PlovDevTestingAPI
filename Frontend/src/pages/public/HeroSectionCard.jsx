@@ -6,7 +6,7 @@ const HeroSectionCard = ({ Title1, Title2, Subtitle, body, img , marquee1,marque
     <div className='   m-auto text-2xl text-white max-lg:text-sm'>
 
       <div className='bg-black w-full min-md:flex'>
-        <div className='   w-[50%] p-[8%] max-md:w-full'>
+        <div className='   w-[50%] p-[8%] pt-4 max-md:w-full'>
           <div className=' text-[70px] max-xl:text-[48px] font-bold'>{Title1}<span className='text-teal-300'>{Title2}</span> </div>
           <div className='min-lg:mt-24  md:mt-12'>{Subtitle} </div>
           <div className='mt-10 text-sm text-gray-500'>{body}</div>
@@ -21,7 +21,7 @@ const HeroSectionCard = ({ Title1, Title2, Subtitle, body, img , marquee1,marque
       </div>
       <div className=' w-full bg-black text-white  '>
         <marquee behavior="" direction="">
-          <div className='flex m-4 justify-around '>
+          <div className='flex m-4 gap-8 justify-around '>
             <div >{marquee1}</div> 
             <div>{marquee2}</div>
             <div>{marquee3}</div>

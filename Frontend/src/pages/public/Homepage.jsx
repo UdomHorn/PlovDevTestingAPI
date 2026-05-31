@@ -9,7 +9,7 @@ import TotalDetail from '../../components/courses/about/TotalDetail'
 import HeroSectionCard from './HeroSectionCard'
 const Homepage = () => {
   return (
-    <div className=' m-[auto] p-[auto] pt-30'>
+    <div className=' m-[auto] p-[auto] pt-23'>
      
      <HeroSectionCard 
         Title1={"Code Smarter Build Real" }

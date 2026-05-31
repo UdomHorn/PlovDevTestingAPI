@@ -75,7 +75,7 @@ const NavbarAfterLogin = ({ user, onLogout }) => {
               {user?.firstName?.[0]?.toUpperCase() || 'U'}{user?.lastName?.[0]?.toUpperCase() || ''}
             </button>
             {profileDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+              <div className=" max-sm:hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
                 <div className="px-4 py-2 border-b border-gray-100">
                   <p className="text-sm font-semibold text-gray-800 truncate">{user?.firstName} {user?.lastName}</p>
                   <p className="text-xs text-gray-500 truncate">{user?.email}</p>
@@ -110,7 +110,7 @@ const NavbarAfterLogin = ({ user, onLogout }) => {
           <div className=' md:hidden mt-12'><NavLink to="/instructor" onClick={() => IsmenuOpen(false)} className='hover:text-teal-500  duration-200'>Instructor</NavLink></div>
           <div className=' md:hidden mt-4'><NavLink to="/mylearning" onClick={() => IsmenuOpen(false)} className='hover:text-teal-500  duration-200'>MyLearning</NavLink></div>
           
-          <div className='mt-8 pt-4 border-t border-gray-200'>
+          <div className='  mt-8 pt-4 border-t border-gray-200'>
             <p className="text-sm font-semibold text-gray-800">{user?.firstName} {user?.lastName}</p>
             <p className="text-xs text-gray-500 truncate mb-4">{user?.email}</p>
             <button
@@ -119,7 +119,7 @@ const NavbarAfterLogin = ({ user, onLogout }) => {
                 onLogout()
                 navigate('/')
               }}
-              className="w-full py-2 text-center text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md transition-colors duration-200"
+              className=" w-full py-2 text-center text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md transition-colors duration-200"
             >
               Logout
             </button>
