@@ -6,10 +6,29 @@ const Loginpage = ({ onLogin }) => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState({})
   const navigate = useNavigate()
+
+  const validate = () => {
+    const errors = {}
+    if (!email.trim()) errors.email = 'Email is required'
+    if (!password.trim()) errors.password = 'Password is required'
+    return errors
+  }
+
+  const handleBlur = (fieldName, value) => {
+    if (!value.trim()) {
+      setFieldErrors(prev => ({ ...prev, [fieldName]: `${fieldName === 'email' ? 'Email' : 'Password'} is required` }))
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const errors = validate()
+    setFieldErrors(errors)
+    if (Object.keys(errors).length > 0) return
+
     setLoading(true)
     setError('')
 
@@ -66,8 +85,8 @@ const Loginpage = ({ onLogin }) => {
           </div>
         )}
 
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm space-y-4">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate>
+          <div className=" space-y-4">
             <div>
               <label htmlFor="email-address" className="block text-sm font-medium text-gray-700 mb-1">
                 Email address
@@ -77,12 +96,12 @@ const Loginpage = ({ onLogin }) => {
                 name="email"
                 type="email"
                 autoComplete="email"
-                required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 sm:text-sm transition-all duration-200"
-                placeholder="you@example.com"
+                onChange={(e) => { setEmail(e.target.value); setFieldErrors(prev => ({ ...prev, email: '' })) }}
+                onBlur={(e) => handleBlur('email', e.target.value)}
+                className={`appearance-none relative block w-full px-3 py-3 border ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg text-gray-900 focus:outline-none focus:ring-2 ${fieldErrors.email ? 'focus:ring-red-500 focus:border-red-500' : 'focus:ring-teal-500 focus:border-teal-500'} sm:text-sm transition-all duration-200`}
               />
+              {fieldErrors.email && <p className="mt-1 text-sm text-red-600">{fieldErrors.email}</p>}
             </div>
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
@@ -93,12 +112,12 @@ const Loginpage = ({ onLogin }) => {
                 name="password"
                 type="password"
                 autoComplete="current-password"
-                required
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 sm:text-sm transition-all duration-200"
-                placeholder="••••••••"
+                onChange={(e) => { setPassword(e.target.value); setFieldErrors(prev => ({ ...prev, password: '' })) }}
+                onBlur={(e) => handleBlur('password', e.target.value)}
+                className={`appearance-none relative block w-full px-3 py-3 border ${fieldErrors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg text-gray-900 focus:outline-none focus:ring-2 ${fieldErrors.password ? 'focus:ring-red-500 focus:border-red-500' : 'focus:ring-teal-500 focus:border-teal-500'} sm:text-sm transition-all duration-200`}
               />
+              {fieldErrors.password && <p className="mt-1 text-sm text-red-600">{fieldErrors.password}</p>}
             </div>
           </div>
 

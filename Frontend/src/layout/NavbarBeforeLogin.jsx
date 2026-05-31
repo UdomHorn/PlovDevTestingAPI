@@ -62,8 +62,8 @@ const NavbarBeforeLogin = () => {
                     <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} setHasTyped={setHasTyped} />
 
                     <div className='flex items-center gap-2'>
-                        <div className=' max-md:hidden'><NavLink to="/login" className='hover:text-teal-500  duration-200'>Sign In</NavLink></div>
-                        <div className=' max-md:hidden'><NavLink to="/signup" className='hover:text-white text-white  bg-teal-400 rounded-md active:text-black p-2 duration-200'>
+                        <div className=' max-md:hidden'><NavLink to="/login" className={({ isActive }) => `rounded-md p-2 duration-200 ${isActive ? 'bg-teal-400 text-white' : 'hover:text-teal-500'}`}>Sign In</NavLink></div>
+                        <div className=' max-md:hidden'><NavLink to="/signup" className={({ isActive }) => `rounded-md p-2 duration-200 ${isActive ? 'bg-teal-400 text-white hover:text-white' : location.pathname === '/login' ? 'text-black hover:text-teal-500' : 'bg-teal-400 text-white hover:text-white'}`}>
                             Signup Free</NavLink></div>
                         <div className='lg:hidden h-[40px] w-[52px]  justify-center flex items-center' onClick={() => IsmenuOpen(!menuOpen)}>  <IoMenu />
                         </div>
@@ -78,8 +78,8 @@ const NavbarBeforeLogin = () => {
                     <li className=''><NavLink to="/aboutus" onClick={() => IsmenuOpen(false)} className={({ isActive }) => `hover:text-teal-500 duration-200 ${isActive ? 'text-[#026357]' : ''}`}>About Us</NavLink></li>
                     <li className=''><NavLink to="/jobboard" onClick={() => IsmenuOpen(false)} className={({ isActive }) => `hover:text-teal-500 duration-200 ${isActive ? 'text-[#026357]' : ''}`}>Job Board</NavLink> </li>
 
-                    <div className=' md:hidden mt-12'><NavLink to="/login" className='hover:text-teal-500  duration-200'>Sign In</NavLink></div>
-                    <div className=' md:hidden mt-4'><NavLink to="/signup" className='hover:text-white text-white  bg-teal-400 rounded-md active:text-black p-2 duration-200'>
+                    <div className=' md:hidden mt-12'><NavLink to="/login" className={({ isActive }) => `rounded-md p-2 duration-200 ${isActive ? 'bg-teal-400 text-white' : 'hover:text-teal-500'}`}>Sign In</NavLink></div>
+                    <div className=' md:hidden mt-4'><NavLink to="/signup" className={({ isActive }) => `rounded-md p-2 duration-200 ${isActive ? 'bg-teal-400 text-white hover:text-white' : location.pathname === '/login' ? 'text-black hover:text-teal-500' : 'bg-teal-400 text-white hover:text-white'}`}>
                         Signup Free</NavLink></div>
                 </ul>
             </div>
