@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Route,Routes } from 'react-router-dom'
 import GetUser from './components/users/GetUser'
 import Homepage from './pages/public/Homepage'
-import Nav from './layout/Nav'
+import NavbarBeforeLogin from './layout/NavbarBeforeLogin'
 import Register from './pages/public/Register'
 import React from 'react'
 import Coursespage from './pages/public/Coursespage'
@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <div className=''>
         <div className='w-[85%] xl:w-[90%] max-xl:w-[94%] max-w-360 m-auto p-[auto]  justify-center bg-white '>
-        <Nav />
+        <NavbarBeforeLogin />
 
   <Routes >
     <Route path="/" element={<Homepage />} />
