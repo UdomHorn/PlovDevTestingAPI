@@ -5,7 +5,7 @@ export default function CourseCard({ data }) {
     <>
       <div className='m-12 w-[209px] h-[350px] border-1 border-gray-300 rounded-lg relative  
        bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-teal-100/50 transition-all duration-300 hover:shadow-2xl
-      '> 
+      '>
         <div className='relative'>
           <div className=''>
             <img
