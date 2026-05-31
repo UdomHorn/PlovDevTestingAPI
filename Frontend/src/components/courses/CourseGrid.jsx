@@ -31,7 +31,7 @@ const CourseGrid = () => {
   }
 
   return (
-      <div className='grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 justify-items-center'>
+      <div className='grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 justify-items-center '>
         {thumnail.map(data=>{
           return <CourseCard key={data.id} data={data} />
         })}
