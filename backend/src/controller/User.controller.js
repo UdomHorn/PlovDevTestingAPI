@@ -99,10 +99,40 @@ const deleteUser = async (req , res) => {
     }
 }
 
+// login user
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({ message: "Email and password are required!" });
+        }
+
+        const user = await User.findOne({ where: { email, password } });
+
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password!" });
+        }
+
+        res.json({
+            message: "Login successful!",
+            user: {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 
 module.exports = {
     createUser ,
     viewUser ,
     updateUser , 
-    deleteUser
+    deleteUser,
+    loginUser
 }
