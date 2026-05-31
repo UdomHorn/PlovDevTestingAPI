@@ -56,6 +56,7 @@ export default function Footer() {
       <div className="border-t border-gray-700 mt-10 pt-4 flex flex-col md:flex-row justify-between text-xs text-gray-500">
         <p>@ 2026</p>
         <p>
+          Plov
           <span className="text-yellow-400">Dev</span>. All rights reserved.
         </p>
       </div>

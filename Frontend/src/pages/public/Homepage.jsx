@@ -12,10 +12,17 @@ const Homepage = () => {
     <div className=' m-[auto] p-[auto] pt-30'>
      
      <HeroSectionCard 
-        Title1="Code Smarter Build Real" 
-        Title2 ="Skills." 
-        Subtitle= "Start learning with PlovDev, earn certificates, and land a job." 
-        img={Heroimg} />
+        Title1={"Code Smarter Build Real" }
+        Title2 ={"Skills."} 
+        Subtitle= {"Start learning with PlovDev, earn certificates, and land a job." }
+        img={Heroimg}
+        marquee1={"Web Design"}
+        marquee2={"Game Development"}
+        marquee3={"Cloud computing"}
+        marquee4={"AI"}
+        marquee5={"Machine Learning"}
+        marquee6={"Cyber Security"}
+         />
      
         <CourseGrid />
       
