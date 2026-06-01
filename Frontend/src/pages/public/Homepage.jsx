@@ -1,6 +1,6 @@
 import React from 'react'
 import Heroimg from "../../assets/Hero-img.png"
-import CourseGrid from '../../components/courses/CourseGrid'
+import CourseCard from '../../components/courses/CourseCard'
 import Coursecount from '../../components/courses/Coursecount'
 import Jobcount from '../../components/jobs/Jobcount'
 import { NavLink } from 'react-router-dom'
@@ -24,7 +24,7 @@ const Homepage = () => {
         marquee6={"Cyber Security"}
          />
      
-        <CourseGrid />
+        <CourseCard />
       
 
         <TotalDetail />

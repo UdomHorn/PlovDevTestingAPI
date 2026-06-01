@@ -1,7 +1,7 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
-const SingleCourseCard = ({ data }) => {
+const SingleCourseEditCard = ({data}) => {
   return (
     <div className='m-12 w-[209px] h-[350px] border-1 border-gray-300 rounded-lg relative  
        bg-white/70 backdrop-blur-md rounded-2xl shadow-xl border border-teal-100/50 transition-all duration-300 hover:shadow-2xl
@@ -41,7 +41,8 @@ const SingleCourseCard = ({ data }) => {
   )
 }
 
-export default function CourseCard() {
+
+export default function CourseEditCard() {
   const [thumnail, setThumnail] = useState([])
   const [searchParams] = useSearchParams()
   const search = searchParams.get('search') || ''
@@ -70,7 +71,7 @@ export default function CourseCard() {
   return (
     <div className='grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 justify-items-center '>
       {thumnail.map(data => {
-        return <SingleCourseCard key={data.id} data={data} />
+        return <SingleCourseEditCard key={data.id} data={data} />
       })}
     </div>
   )

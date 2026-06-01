@@ -32,6 +32,8 @@ import FavoritePage from './pages/mylearning/FavoritePage'
 import CertifiatePage from './pages/mylearning/CertifiatePage'
 import InstructorQnA from './pages/instructor/InstructorQnA'
 import InstructorMycourse from './pages/instructor/InstructorMycourse'
+import InstructorPublishedPage from './pages/instructor/InstructorPublishedPage'
+import InstructorPendingPage from './pages/instructor/InstructorPendingPage'
 
 const DashboardLayout = ({ type }) => {
   const Sidebar = type === 'admin' ? SidebarAdmin : SidebarUser
@@ -121,7 +123,11 @@ function App() {
             <Route path="/instructor" element={<DashboardLayout type="instructor" />}>
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<InstructorDashboard />} />
-              <Route path="my-course" element={<InstructorMycourse />} />
+              <Route path="my-course" element={<InstructorMycourse />}>
+                <Route index element={<Navigate to="published" replace />} />
+                <Route path="published" element={<InstructorPublishedPage />} />
+                <Route path="pending" element={<InstructorPendingPage />} />
+              </Route>
               <Route path="q&a" element={<InstructorQnA />} />
               <Route path="create-course" element={<InstructorCreateCoursePage />} />
               <Route path="students" element={<InstructorStudentPage />} />

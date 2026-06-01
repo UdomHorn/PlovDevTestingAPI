@@ -1,9 +1,9 @@
 import React from 'react'
-import CourseGrid from '../../components/courses/CourseGrid'
+import CourseCard from '../../components/courses/CourseCard'
 const Coursespage = () => {
   return (
     <div className='m-[auto] justify-center  pt-23'>
-      <CourseGrid />
+      <CourseCard />
       
     </div>
   )

@@ -1,6 +1,5 @@
 import React from 'react'
 import Coursecount from '../../components/courses/Coursecount'
-import CourseGrid from '../../components/courses/CourseGrid'
 import Jobcount from '../../components/jobs/Jobcount'
 import Aboutusimage from "../../assets/Aboutus-img.png"
 import { NavLink } from 'react-router-dom'
