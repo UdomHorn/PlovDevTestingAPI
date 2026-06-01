@@ -5,7 +5,7 @@ import NavbarBeforeLogin from './layout/NavbarBeforeLogin'
 import NavbarAfterLogin from './layout/NavbarAfterLogin'
 import Register from './pages/public/Register'
 import Loginpage from './pages/public/Loginpage'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Coursespage from './pages/public/Coursespage'
 import AboutUspage from './pages/public/AboutUspage'
 import Jobboardpage from './pages/public/Jobboardpage'
@@ -34,6 +34,9 @@ import InstructorQnA from './pages/instructor/InstructorQnA'
 import InstructorMycourse from './pages/instructor/InstructorMycourse'
 import InstructorPublishedPage from './pages/instructor/InstructorPublishedPage'
 import InstructorPendingPage from './pages/instructor/InstructorPendingPage'
+import OtpPage from './pages/public/OtpPage'
+import ProtectedRoute from './components/ProtectedRoute'
+import { useAuth } from './context/AuthContext'
 
 const DashboardLayout = ({ type }) => {
   const Sidebar = type === 'admin' ? SidebarAdmin : SidebarUser
@@ -72,20 +75,7 @@ const PageFooter = () => {
 }
 
 function App() {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user")
-    return savedUser ? JSON.parse(savedUser) : null
-  })
-
-  const handleLogin = (userData) => {
-    setUser(userData)
-    localStorage.setItem("user", JSON.stringify(userData))
-  }
-
-  const handleLogout = () => {
-    setUser(null)
-    localStorage.removeItem("user")
-  }
+  const { user, logout } = useAuth()
 
   return (
     <BrowserRouter>
@@ -93,7 +83,7 @@ function App() {
         <div className=' '>
         {/* w-[85%] xl:w-[90%] max-xl:w-[94%] max-w-360 m-auto p-[auto]  justify-center bg-white */}
           {user ? (
-            <NavbarAfterLogin user={user} onLogout={handleLogout} />
+            <NavbarAfterLogin user={user} onLogout={logout} />
           ) : (
             <NavbarBeforeLogin />
           )}
@@ -105,43 +95,50 @@ function App() {
             <Route path="/jobboard" element={<Jobboardpage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/signup" element={<Register />} />
-            <Route path="/login" element={<Loginpage onLogin={handleLogin} />} />
-            <Route path="/logout" element={<LogoutRoute onLogout={handleLogout} />} />
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/otp" element={<OtpPage />} />
+            <Route path="/logout" element={<LogoutRoute onLogout={logout} />} />
 
-            <Route path="/admin" element={<DashboardLayout type="admin" />}>
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="courses" element={<AdminCoursesPage />} />
-              <Route path="users" element={<AdminUsersPage />} />
-              <Route path="payment" element={<AdminPaymentPage />} />
-              <Route path="payout" element={<AdminPayoutPage />} />
-              <Route path="jobs" element={<AdminJobsPage />} />
-              <Route path="profile" element={<AdminProfilePage />} />
-              <Route path="setting" element={<AdminSettingPage />} />
-            </Route>
-
-            <Route path="/instructor" element={<DashboardLayout type="instructor" />}>
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<InstructorDashboard />} />
-              <Route path="my-course" element={<InstructorMycourse />}>
-                <Route index element={<Navigate to="published" replace />} />
-                <Route path="published" element={<InstructorPublishedPage />} />
-                <Route path="pending" element={<InstructorPendingPage />} />
+            <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+              <Route path="/admin" element={<DashboardLayout type="admin" />}>
+                <Route index element={<Navigate to="dashboard" replace />} />
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="courses" element={<AdminCoursesPage />} />
+                <Route path="users" element={<AdminUsersPage />} />
+                <Route path="payment" element={<AdminPaymentPage />} />
+                <Route path="payout" element={<AdminPayoutPage />} />
+                <Route path="jobs" element={<AdminJobsPage />} />
+                <Route path="profile" element={<AdminProfilePage />} />
+                <Route path="setting" element={<AdminSettingPage />} />
               </Route>
-              <Route path="q&a" element={<InstructorQnA />} />
-              <Route path="create-course" element={<InstructorCreateCoursePage />} />
-              <Route path="students" element={<InstructorStudentPage />} />
-              <Route path="payout" element={<InstructorPayoutPage />} />
-              <Route path="profile" element={<InstructorProfilePage />} />
-              <Route path="setting" element={<InstructorSettingPage />} />
             </Route>
 
-            <Route path="/mylearning" element={<MyLearningLayout />}>
-              <Route index element={<InprocessPage />} />
-              <Route path="inprocess" element={<InprocessPage />} />
-              <Route path="complete" element={<CompletePage />} />
-              <Route path="favorite" element={<FavoritePage />} />
-              <Route path="certificate" element={<CertifiatePage />} />
+            <Route element={<ProtectedRoute allowedRoles={['admin', 'instructor']} />}>
+              <Route path="/instructor" element={<DashboardLayout type="instructor" />}>
+                <Route index element={<Navigate to="dashboard" replace />} />
+                <Route path="dashboard" element={<InstructorDashboard />} />
+                <Route path="my-course" element={<InstructorMycourse />}>
+                  <Route index element={<Navigate to="published" replace />} />
+                  <Route path="published" element={<InstructorPublishedPage />} />
+                  <Route path="pending" element={<InstructorPendingPage />} />
+                </Route>
+                <Route path="q&a" element={<InstructorQnA />} />
+                <Route path="create-course" element={<InstructorCreateCoursePage />} />
+                <Route path="students" element={<InstructorStudentPage />} />
+                <Route path="payout" element={<InstructorPayoutPage />} />
+                <Route path="profile" element={<InstructorProfilePage />} />
+                <Route path="setting" element={<InstructorSettingPage />} />
+              </Route>
+            </Route>
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/mylearning" element={<MyLearningLayout />}>
+                <Route index element={<InprocessPage />} />
+                <Route path="inprocess" element={<InprocessPage />} />
+                <Route path="complete" element={<CompletePage />} />
+                <Route path="favorite" element={<FavoritePage />} />
+                <Route path="certificate" element={<CertifiatePage />} />
+              </Route>
             </Route>
 
             <Route path="/dashboard" element={<Navigate to="/admin/dashboard" replace />} />

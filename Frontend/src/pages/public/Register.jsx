@@ -86,7 +86,7 @@ const Register = () => {
     } catch (error) {
       console.error("Error submitting form:", error)
       setIsSuccess(false)
-      setMessage("Connection error. Please check if the server is running.")
+      setMessage("Server error.")
     } finally {
       setLoading(false)
     }
@@ -111,7 +111,7 @@ const Register = () => {
           <div className={`${isSuccess ? 'bg-green-50 border-green-400' : 'bg-red-50 border-red-400'} border-l-4 p-4 rounded-md`}>
             <div className="flex">
               <div className="flex-shrink-0">
-                <span className={isSuccess ? 'text-green-400' : 'text-red-400'}>{isSuccess ? '✅' : '⚠️'}</span>
+                <span className={isSuccess ? 'text-green-400' : 'text-red-400'}>{isSuccess ? 'OK' : '!'}</span>
               </div>
               <div className="ml-3">
                 <p className={`text-sm ${isSuccess ? 'text-green-700' : 'text-red-700'}`}>{message}</p>

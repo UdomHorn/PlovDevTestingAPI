@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 
-const Loginpage = ({ onLogin }) => {
-  const [email, setEmail] = useState('')
+const Loginpage = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [email, setEmail] = useState(location.state?.verifiedEmail || '')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [message, setMessage] = useState(location.state?.message || '')
   const [loading, setLoading] = useState(false)
   const [fieldErrors, setFieldErrors] = useState({})
-  const navigate = useNavigate()
+  const { login } = useAuth()
 
   const validate = () => {
     const errors = {}
@@ -31,6 +35,7 @@ const Loginpage = ({ onLogin }) => {
 
     setLoading(true)
     setError('')
+    setMessage('')
 
     try {
       const res = await fetch("/api/login", {
@@ -44,14 +49,14 @@ const Loginpage = ({ onLogin }) => {
       const data = await res.json()
 
       if (res.ok) {
-        onLogin(data.user)
-        navigate('/')
+        login(data.token)
+        navigate(location.state?.from?.pathname || '/', { replace: true })
       } else {
         setError(data.message || 'Login failed. Please check your credentials.')
       }
     } catch (err) {
       console.error(err)
-      setError('Connection error. Please check if the server is running.')
+      setError('Server error.')
     } finally {
       setLoading(false)
     }
@@ -76,12 +81,18 @@ const Loginpage = ({ onLogin }) => {
           <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-md">
             <div className="flex">
               <div className="flex-shrink-0">
-                <span className="text-red-400">⚠️</span>
+                <span className="text-red-400">!</span>
               </div>
               <div className="ml-3">
                 <p className="text-sm text-red-700">{error}</p>
               </div>
             </div>
+          </div>
+        )}
+
+        {message && (
+          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-md">
+            <p className="text-sm text-green-700">{message}</p>
           </div>
         )}
 
@@ -97,16 +108,21 @@ const Loginpage = ({ onLogin }) => {
                 type="email"
                 autoComplete="email"
                 value={email}
-                onChange={(e) => { setEmail(e.target.value); setFieldErrors(prev => ({ ...prev, email: '' })) }}
+                onChange={(e) => { setEmail(e.target.value); setMessage(''); setFieldErrors(prev => ({ ...prev, email: '' })) }}
                 onBlur={(e) => handleBlur('email', e.target.value)}
                 className={`appearance-none relative block w-full px-3 py-3 border ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg text-gray-900 focus:outline-none focus:ring-2 ${fieldErrors.email ? 'focus:ring-red-500 focus:border-red-500' : 'focus:ring-teal-500 focus:border-teal-500'} sm:text-sm transition-all duration-200`}
               />
               {fieldErrors.email && <p className="mt-1 text-sm text-red-600">{fieldErrors.email}</p>}
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
+              <div className="mb-1 flex items-center justify-between gap-3">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <Link to="/otp" className="text-sm font-medium text-teal-600 hover:text-teal-500 transition-colors duration-200">
+                  Forgot password?
+                </Link>
+              </div>
               <input
                 id="password"
                 name="password"

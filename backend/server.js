@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = 3000
@@ -27,6 +28,7 @@ const CategoryRoute = require("./src/routes/Category.route")
 const joblistingRoute = require("./src/routes/Joblisting.route")
 const PaymentRoute = require("./src/routes/Payment.route")
 const Thumnailcards = require("./src/routes/Thumnail.route")
+const OtpRoute = require("./src/routes/Otp.route")
 
 
 app.use("/api" , UserRoute)
@@ -34,6 +36,7 @@ app.use("/api",CategoryRoute)
 app.use("/api",joblistingRoute)
 app.use("/api",PaymentRoute)
 app.use("/api",Thumnailcards)
+app.use("/api",OtpRoute)
 
 
 
