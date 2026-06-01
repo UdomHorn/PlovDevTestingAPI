@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { MdOutlineDashboard } from "react-icons/md";
 import { MdOutlineVideoSettings } from "react-icons/md";
@@ -18,24 +17,24 @@ const SidebarAdmin = () => {
 
         <div className='mx-2 py-8  font-bold text-xs text-black'> OVERVIEW </div>
 
-        <li className='p-4' ><NavLink to="/dashboard" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'>
+        <li className='p-4' ><NavLink to="/admin/dashboard" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'>
           <MdOutlineDashboard /> Dashboard
         </NavLink> </li>
 
-        <li className='p-4'><NavLink to="/mycourse" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><MdOutlineVideoSettings /> Courses </NavLink></li>
+        <li className='p-4'><NavLink to="/admin/courses" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><MdOutlineVideoSettings /> Courses </NavLink></li>
 
-        <li className='p-4'><NavLink to="/users" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><FaUserGroup /> Users </NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/users" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><FaUserGroup /> Users </NavLink> </li>
 
-        <li className='p-4'><NavLink to="/payment" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><MdOutlinePayment /> Payment</NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/payment" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><MdOutlinePayment /> Payment</NavLink> </li>
 
-        <li className='p-4'><NavLink to="/payout" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer0'><RiMoneyDollarCircleFill /> Payout</NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/payout" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer0'><RiMoneyDollarCircleFill /> Payout</NavLink> </li>
 
-        <li className='p-4'><NavLink to="/word" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer0'><MdOutlineWork/> Job Board</NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/jobs" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer0'><MdOutlineWork/> Job Board</NavLink> </li>
 
         <div className='mx-2 my-8  font-bold text-xs text-black'> ACCOUNT </div>
 
-        <li className='p-4'><NavLink to="/myprofile" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><CgProfile /> My Profile</NavLink> </li>
-        <li className='p-4'><NavLink to="/setting" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><IoSettingsOutline /> Setting</NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/profile" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><CgProfile /> My Profile</NavLink> </li>
+        <li className='p-4'><NavLink to="/admin/setting" className='hover:text-teal-500 gap-2 duration-200 flex items-center pointer'><IoSettingsOutline /> Setting</NavLink> </li>
 
 
 
