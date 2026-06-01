@@ -30,6 +30,8 @@ import InprocessPage from './pages/mylearning/InprocessPage'
 import CompletePage from './pages/mylearning/CompletePage'
 import FavoritePage from './pages/mylearning/FavoritePage'
 import CertifiatePage from './pages/mylearning/CertifiatePage'
+import InstructorQnA from './pages/instructor/InstructorQnA'
+import InstructorMycourse from './pages/instructor/InstructorMycourse'
 
 const DashboardLayout = ({ type }) => {
   const Sidebar = type === 'admin' ? SidebarAdmin : SidebarUser
@@ -111,6 +113,8 @@ function App() {
             <Route path="/instructor" element={<DashboardLayout type="instructor" />}>
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<InstructorDashboard />} />
+              <Route path="my-course" element={<InstructorMycourse />} />
+              <Route path="q&a" element={<InstructorQnA />} />
               <Route path="create-course" element={<InstructorCreateCoursePage />} />
               <Route path="students" element={<InstructorStudentPage />} />
               <Route path="payout" element={<InstructorPayoutPage />} />
