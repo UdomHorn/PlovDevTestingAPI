@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import Homepage from './pages/public/Homepage'
 import NavbarBeforeLogin from './layout/NavbarBeforeLogin'
 import NavbarAfterLogin from './layout/NavbarAfterLogin'
@@ -62,6 +62,13 @@ const LogoutRoute = ({ onLogout }) => {
   return <Navigate to="/" replace />
 }
 
+const PageFooter = () => {
+  const location = useLocation()
+  const hideFooter = location.pathname.startsWith('/admin') || location.pathname.startsWith('/instructor')
+
+  return hideFooter ? null : <Footer />
+}
+
 function App() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user")
@@ -81,7 +88,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className=''>
-        <div className='w-[85%] xl:w-[90%] max-xl:w-[94%] max-w-360 m-auto p-[auto]  justify-center bg-white '>
+        <div className=' '>
+        {/* w-[85%] xl:w-[90%] max-xl:w-[94%] max-w-360 m-auto p-[auto]  justify-center bg-white */}
           {user ? (
             <NavbarAfterLogin user={user} onLogout={handleLogout} />
           ) : (
@@ -144,7 +152,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
 
-          <Footer />
+          <PageFooter />
           {/* <SidebarAdmin /> */}
           {/* <SidebarUser /> */}
         </div>
